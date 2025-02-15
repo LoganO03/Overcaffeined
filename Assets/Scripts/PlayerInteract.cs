@@ -27,7 +27,7 @@ public class PlayerInteract : MonoBehaviour
         if (inConversation)
         {
             Debug.Log("Skipping Line");
-            //GameManager.Instance.SkipLine();
+            GameManager.Instance.SkipLine();
         }
         else
         {
@@ -45,12 +45,33 @@ public class PlayerInteract : MonoBehaviour
                     }
                     else if (interactable.type == InteractableType.NPC)
                     {
-
+                        GameManager.Instance.startConvo(interactable.dialogue.dialogue, interactable.StartPosition, interactable.npcName);
                     }
                     
-                    //GameManager.Instance.StartDialogue(npc.dialogueAsset.dialogue, npc.StartPosition, npc.npcName);
                 }
             }
         }
+    }
+
+    void JoinConversation()
+    {
+        inConversation = true;
+    }
+
+    void LeaveConversation()
+    {
+        inConversation = false;
+    }
+
+    private void OnEnable()
+    {
+        GameManager.OnDialogueStarted += JoinConversation;
+        GameManager.OnDialogueEnded += LeaveConversation;
+    }
+
+    private void OnDisable()
+    {
+        GameManager.OnDialogueStarted -= JoinConversation;
+        GameManager.OnDialogueEnded -= LeaveConversation;
     }
 }
