@@ -32,23 +32,14 @@ public class EnemyMovement : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
         //Awareness
-        Vector2 enemyToPlayerVector = player.position - transform.position;
-        directionToPlayer = enemyToPlayerVector.normalized;
-        if (enemyToPlayerVector.magnitude <= awarenessArea)
-        {
-            awareOfPlayer = true;
-        }
-        else 
-        {
-            awareOfPlayer = false;
-        }
+        checkAwareness();
 
     }
 
@@ -59,38 +50,53 @@ public class EnemyMovement : MonoBehaviour
         SetVelocity();
     }
 
-    private void UpdateTargetDirection() 
+    private void UpdateTargetDirection()
     {
         if (awareOfPlayer)
         {
             targetDirection = directionToPlayer;
         }
-        else 
+        else
         {
             targetDirection = Vector2.zero;
         }
     }
 
-    private void RotateTowardsTarget() 
+    private void RotateTowardsTarget()
     {
-        if (targetDirection == Vector2.zero) 
+        if (targetDirection == Vector2.zero)
         {
             return;
         }
+        Debug.Log("Here");
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemyRotSpeed * Time.deltaTime);
         rb.SetRotation(rotation);
     }
 
-    private void SetVelocity() 
+    private void SetVelocity()
     {
         if (targetDirection == Vector2.zero)
         {
             rb.linearVelocity = Vector2.zero;
         }
-        else 
+        else
         {
             rb.linearVelocity = transform.up * enemySpeed;
+        }
+    }
+
+    private void checkAwareness() 
+    {
+        Vector2 enemyToPlayerVector = player.position - transform.position;
+        directionToPlayer = enemyToPlayerVector.normalized;
+        if (enemyToPlayerVector.magnitude <= awarenessArea)
+        {
+            awareOfPlayer = true;
+        }
+        else
+        {
+            awareOfPlayer = false;
         }
     }
 }
