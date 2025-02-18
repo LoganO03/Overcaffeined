@@ -40,9 +40,9 @@ public class GameManager : MonoBehaviour
     public static event Action OnDialogueEnded;
     bool skipLineTriggered;
 
-    private bool hasBean = true;
+    [SerializeField] private bool hasBean = false;
     [SerializeField] private bool hasMug = false;
-    private bool hasMilk = true;
+    [SerializeField] private bool hasMilk = false;
 
     private bool gameHasEnded = false;
 
@@ -153,7 +153,8 @@ public class GameManager : MonoBehaviour
 
     public bool getHasMugandMilk() 
     {
-        return hasMug && hasMilk;
+        Debug.Log("mug and milk");
+        return (hasMug && hasMilk);
     }
 
     public void ChangeHealth(int newHealth) 
@@ -162,11 +163,27 @@ public class GameManager : MonoBehaviour
         ShowHearts();
     }
 
+    public void EnableUI(bool enable) 
+    {
+        inGameUICanvas.gameObject.SetActive(enable);
+    }
+
+    public void StartGame() 
+    {
+        hasBean = false;
+        hasMug = false;
+        hasMilk = false;
+
+        Initiate.Fade("PlayArea", Color.black, 1);
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         
     }
+
+
 
     // Update is called once per frame
     void Update()

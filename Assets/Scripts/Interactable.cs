@@ -29,7 +29,7 @@ public class Interactable : MonoBehaviour
     [SerializeField] public string npcName;
     [SerializeField] public GameObject searchingSound;
 
-    private bool firstInteraction = true;
+    public bool firstInteraction = true;
     public int repeatStartPosition;
 
     //private bool interactingEndsGame = false;
