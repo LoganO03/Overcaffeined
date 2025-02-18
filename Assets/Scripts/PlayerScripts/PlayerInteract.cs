@@ -42,10 +42,16 @@ public class PlayerInteract : MonoBehaviour
                     if (interactable.type == InteractableType.ITEM)
                     {
                         GameManager.Instance.AddItem(interactable.item);
+                        GameManager.Instance.startConvo(interactable.dialogue.dialogue, interactable.StartPosition, interactable.npcName);
                     }
                     else if (interactable.type == InteractableType.NPC)
                     {
                         GameManager.Instance.startConvo(interactable.dialogue.dialogue, interactable.StartPosition, interactable.npcName);
+                    }
+                    if (interactable.searchingSound != null)
+                    {
+                        GameObject go = GameObject.Instantiate(interactable.searchingSound);
+                        Destroy(go, 2);
                     }
                     
                 }
