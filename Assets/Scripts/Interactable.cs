@@ -8,11 +8,19 @@ public enum InteractableType
     NPC,
 }
 
+public enum Item 
+{
+    BEAN,
+    MUG,
+    MILK,
+}
+
 
 
 public class Interactable : MonoBehaviour
 {
     public InteractableType type;
+    public Item item;
 
     [Header("NPC Settings")]
 

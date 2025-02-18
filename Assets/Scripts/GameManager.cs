@@ -4,6 +4,7 @@ using UnityEditor.Rendering;
 using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -22,10 +23,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    [SerializeField] private int health;
+
     [SerializeField] private GameObject convoCanvas;
 
     private TextMeshProUGUI nameText;
     private TextMeshProUGUI convoText;
+
+    [SerializeField] private GameObject inGameUICanvas;
+    [SerializeField] private GameObject HeartPanel;
+    [SerializeField] private GameObject BeanImage;
+    [SerializeField] private GameObject MugImage;
+    [SerializeField] private GameObject MilkImage;
 
     public static event Action OnDialogueStarted;
     public static event Action OnDialogueEnded;
@@ -74,6 +83,41 @@ public class GameManager : MonoBehaviour
         nameText.text = null;
         convoText.text = null;
         convoCanvas.SetActive(false);
+    }
+
+    public void AddItem(Item item) 
+    {
+        //add logic to make game know you have the items and add them to the UI
+        switch (item) 
+        {
+            case Item.BEAN:
+                BeanImage.SetActive(true);
+                break;
+            case Item.MUG:
+                MugImage.SetActive(true);
+                break;
+            case Item.MILK:
+                MilkImage.SetActive(true);
+                break;
+        }
+    }
+
+    public void ShowHearts() 
+    {
+        for (int i = 0; i < health; i++) 
+        {
+            HeartPanel.transform.GetChild(i).gameObject.SetActive(true);
+        }
+        for (int i = health; i < 5; i++)
+        {
+            HeartPanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+    }
+
+    public void ChangeHealth(int newHealth) 
+    {
+        health = newHealth;
+        ShowHearts();
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
