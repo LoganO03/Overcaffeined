@@ -3,6 +3,6 @@ using UnityEngine;
 public class EnemyDamageSource : MonoBehaviour
 {
 
-    public int damage = 10;
+    public int damage = 1;
 
 }
