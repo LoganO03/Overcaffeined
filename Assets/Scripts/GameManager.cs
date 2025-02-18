@@ -105,7 +105,7 @@ public class GameManager : MonoBehaviour
         convoCanvas.SetActive(false);
         if (gameHasEnded) 
         {
-            //put end game code
+            Success();
         }
     }
 
@@ -138,6 +138,11 @@ public class GameManager : MonoBehaviour
         for (int i = health; i < 5; i++)
         {
             HeartPanel.transform.GetChild(i).gameObject.SetActive(false);
+        }
+
+        if (health < 1) 
+        {
+            Death();
         }
     }
 
@@ -175,6 +180,16 @@ public class GameManager : MonoBehaviour
         hasMilk = false;
 
         Initiate.Fade("PlayArea", Color.black, 1);
+    }
+
+    public void Death() 
+    {
+        Initiate.Fade("MainMenu", Color.red, 1);
+    }
+
+    public void Success() 
+    {
+        Initiate.Fade("MainMenu", Color.green, 1);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
