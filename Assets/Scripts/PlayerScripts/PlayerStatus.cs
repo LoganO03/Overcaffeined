@@ -3,7 +3,7 @@ using UnityEngine;
 public class PlayerStatus : MonoBehaviour
 {
 
-    [SerializeField]private int health = 100;
+    [SerializeField]private int health = 5;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,6 +22,7 @@ public class PlayerStatus : MonoBehaviour
         if (collision.collider.gameObject.TryGetComponent(out EnemyDamageSource damageSource)) 
         {
             health -= damageSource.damage;
+            GameManager.Instance.ChangeHealth(health);
         }
     }
 }

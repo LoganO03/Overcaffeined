@@ -41,7 +41,7 @@ public class PlayerInteract : MonoBehaviour
                 {
                     if (interactable.type == InteractableType.ITEM)
                     {
-                        Debug.Log("you touched a coin");
+                        GameManager.Instance.AddItem(interactable.item);
                     }
                     else if (interactable.type == InteractableType.NPC)
                     {
