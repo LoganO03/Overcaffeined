@@ -32,7 +32,7 @@ public class Interactable : MonoBehaviour
     private bool firstInteraction = true;
     public int repeatStartPosition;
 
-    private bool interactingEndsGame = false;
+    //private bool interactingEndsGame = false;
 
     public int StartPosition
     {
@@ -52,7 +52,7 @@ public class Interactable : MonoBehaviour
 
     public void makeEndGame() 
     {
-        interactingEndsGame = true;
+        //interactingEndsGame = true;
     }
 
     //[Header("Item Settings")]

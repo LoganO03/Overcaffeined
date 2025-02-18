@@ -15,13 +15,13 @@ public class Menu : MonoBehaviour
         
     }
 
-    public void OnPlayButton()
-    {
-        SceneManager.LoadScene();
-    }
+    //public void OnPlayButton()
+    //{
+    //    SceneManager.LoadScene();
+    //}
 
-    public void OnQuitButton()
-    {
-    Application.Quit(); // Quit the game
-    }
+    //public void OnQuitButton()
+    //{
+    //Application.Quit(); // Quit the game
+    //}
 }
