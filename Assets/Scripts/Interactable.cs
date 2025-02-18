@@ -1,3 +1,4 @@
+using NUnit.Framework.Constraints;
 using UnityEngine;
 using static UnityEngine.Rendering.DebugUI;
 
@@ -26,9 +27,12 @@ public class Interactable : MonoBehaviour
 
     [SerializeField] public Dialogue dialogue;
     [SerializeField] public string npcName;
+    [SerializeField] public GameObject searchingSound;
 
     private bool firstInteraction = true;
-    [SerializeField] private int repeatStartPosition;
+    public int repeatStartPosition;
+
+    private bool interactingEndsGame = false;
 
     public int StartPosition
     {
@@ -44,6 +48,11 @@ public class Interactable : MonoBehaviour
                 return repeatStartPosition;
             }
         }
+    }
+
+    public void makeEndGame() 
+    {
+        interactingEndsGame = true;
     }
 
     //[Header("Item Settings")]
