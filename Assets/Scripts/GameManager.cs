@@ -40,10 +40,30 @@ public class GameManager : MonoBehaviour
     public static event Action OnDialogueEnded;
     bool skipLineTriggered;
 
+    private bool hasBean = true;
+    [SerializeField] private bool hasMug = false;
+    private bool hasMilk = true;
+
+    private bool gameHasEnded = false;
+
+
     public void startConvo(string[] dialogue, int startPosition, string name) 
     {
         nameText = convoCanvas.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         convoText = convoCanvas.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+        nameText.text = name;
+        convoCanvas.SetActive(true);
+        StopAllCoroutines();
+        StartCoroutine(RunDialogue(dialogue, startPosition));
+    }
+
+    public void startConvo(string[] dialogue, int startPosition, string name, bool endsGame)
+    {
+        nameText = convoCanvas.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
+        convoText = convoCanvas.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+        gameHasEnded = endsGame;
 
         nameText.text = name;
         convoCanvas.SetActive(true);
@@ -83,6 +103,10 @@ public class GameManager : MonoBehaviour
         nameText.text = null;
         convoText.text = null;
         convoCanvas.SetActive(false);
+        if (gameHasEnded) 
+        {
+            //put end game code
+        }
     }
 
     public void AddItem(Item item) 
@@ -92,12 +116,15 @@ public class GameManager : MonoBehaviour
         {
             case Item.BEAN:
                 BeanImage.SetActive(true);
+                hasBean = true;
                 break;
             case Item.MUG:
                 MugImage.SetActive(true);
+                hasMug = true;
                 break;
             case Item.MILK:
                 MilkImage.SetActive(true);
+                hasMilk = true;
                 break;
         }
     }
@@ -112,6 +139,21 @@ public class GameManager : MonoBehaviour
         {
             HeartPanel.transform.GetChild(i).gameObject.SetActive(false);
         }
+    }
+
+    public bool hasAllItems() 
+    {
+        return (hasMilk && hasBean && hasMug);
+    }
+
+    public bool getHasMilk() 
+    {
+        return hasMilk;
+    }
+
+    public bool getHasMugandMilk() 
+    {
+        return hasMug && hasMilk;
     }
 
     public void ChangeHealth(int newHealth) 
