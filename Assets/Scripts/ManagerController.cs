@@ -27,16 +27,20 @@ public class ManagerController : MonoBehaviour
         {
             gameObject.GetComponent<Interactable>().dialogue = endingDialogue;
             gameObject.GetComponent<Interactable>().makeEndGame();
+            gameObject.GetComponent<Interactable>().firstInteraction = true;
+        }
+        else if (GameManager.Instance.getHasMugandMilk())
+        {
+            gameObject.GetComponent<Interactable>().dialogue = gotMugDialogue;
+            gameObject.GetComponent<Interactable>().repeatStartPosition = gotMugDialogueRepeatLocation;
+            gameObject.GetComponent<Interactable>().firstInteraction = true;
         }
         else if (GameManager.Instance.getHasMilk())
         {
             gameObject.GetComponent<Interactable>().dialogue = gotMilkDialogue;
             gameObject.GetComponent<Interactable>().repeatStartPosition = gotMilkDialogueRepeatLocation;
+            gameObject.GetComponent<Interactable>().firstInteraction = true;
         }
-        else if (GameManager.Instance.getHasMugandMilk()) 
-        {
-            gameObject.GetComponent<Interactable>().dialogue = gotMugDialogue;
-            gameObject.GetComponent<Interactable>().repeatStartPosition = gotMugDialogueRepeatLocation;
-        }
+       
     }
 }
