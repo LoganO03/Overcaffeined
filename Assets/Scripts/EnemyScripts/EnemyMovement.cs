@@ -34,7 +34,7 @@ public class EnemyMovement : MonoBehaviour
     IEnumerator SlowEnemyCoroutine()
 
     {
-        activeSpeed = 0;
+        activeSpeed = -enemySpeed;
 
         yield return new WaitForSeconds(1f);
 
@@ -89,7 +89,7 @@ public class EnemyMovement : MonoBehaviour
         {
             return;
         }
-        Debug.Log("Here");
+        //Debug.Log("Here");
         Quaternion targetRotation = Quaternion.LookRotation(transform.forward, targetDirection);
         Quaternion rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, enemyRotSpeed * Time.deltaTime);
         rb.SetRotation(rotation);
