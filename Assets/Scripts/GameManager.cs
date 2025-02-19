@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviour
         nameText = convoCanvas.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         convoText = convoCanvas.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
 
+        Time.timeScale = 0;
+
         nameText.text = name;
         convoCanvas.SetActive(true);
         StopAllCoroutines();
@@ -62,6 +64,8 @@ public class GameManager : MonoBehaviour
     {
         nameText = convoCanvas.transform.GetChild(0).transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         convoText = convoCanvas.transform.GetChild(0).transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+
+        Time.timeScale = 0;
 
         gameHasEnded = endsGame;
 
@@ -78,7 +82,7 @@ public class GameManager : MonoBehaviour
 
         for (int i = startPosition; i < dialogue.Length; i++)
         {
-            Debug.Log(dialogue[i]);
+            //Debug.Log(dialogue[i]);
             convoText.text = dialogue[i];
 
             while (skipLineTriggered == false)
@@ -90,6 +94,7 @@ public class GameManager : MonoBehaviour
         }
 
         OnDialogueEnded?.Invoke();
+        Time.timeScale = 1;
         convoCanvas.SetActive(false);
     }
 
@@ -102,7 +107,10 @@ public class GameManager : MonoBehaviour
     {
         nameText.text = null;
         convoText.text = null;
+        Debug.Log("scaled");
         convoCanvas.SetActive(false);
+        Debug.Log("scaled");
+        Time.timeScale = 1;
         if (gameHasEnded) 
         {
             Success();
@@ -158,7 +166,7 @@ public class GameManager : MonoBehaviour
 
     public bool getHasMugandMilk() 
     {
-        Debug.Log("mug and milk");
+        //Debug.Log("mug and milk");
         return (hasMug && hasMilk);
     }
 
