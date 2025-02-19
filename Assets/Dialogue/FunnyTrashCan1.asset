@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 359c5d7f330d66e4d9c0ff705a8a46f5, type: 3}
-  m_Name: ManagerEndingDialogue
+  m_Name: FunnyTrashCan1
   m_EditorClassIdentifier: 
   dialogue:
-  - 'Good Work!
-
-    I can now save the world.
-
-'
-  - I wonder if management will promote me for this.
+  - You search for a while and pull out a piece of paper.
+  - It's someone's will they are passing on their chickens. It's incomplete looks
+    like someone tried to grab it as it was being written.

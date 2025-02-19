@@ -184,12 +184,12 @@ public class GameManager : MonoBehaviour
 
     public void Death() 
     {
-        Initiate.Fade("MainMenu", Color.red, 1);
+        Initiate.Fade("Main Menu", Color.red, 1);
     }
 
     public void Success() 
     {
-        Initiate.Fade("MainMenu", Color.green, 1);
+        Initiate.Fade("Main Menu", Color.green, 1);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created

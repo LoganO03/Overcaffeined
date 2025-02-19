@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
-
+using System;
+using System.Collections;
 public class EnemyMovement : MonoBehaviour
 {
 
@@ -12,6 +13,7 @@ public class EnemyMovement : MonoBehaviour
     private Transform player;
 
     [SerializeField] private float enemySpeed;
+    [SerializeField] private float activeSpeed;
     [SerializeField] private float enemyRotSpeed;
 
     private Vector2 targetDirection;
@@ -21,12 +23,31 @@ public class EnemyMovement : MonoBehaviour
 
     }*/
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.TryGetComponent(out PlayerMovement playerMovement)) 
+        {
+            StartCoroutine(SlowEnemyCoroutine());
+        }
+    }
+
+    IEnumerator SlowEnemyCoroutine()
+
+    {
+        activeSpeed = 0;
+
+        yield return new WaitForSeconds(1f);
+
+        activeSpeed = enemySpeed;
+
+    }
+
 
     private void Awake()
     {
         player = FindFirstObjectByType<PlayerMovement>().transform;
         rb = GetComponent<Rigidbody2D>();
-
+        activeSpeed = enemySpeed;
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -82,7 +103,7 @@ public class EnemyMovement : MonoBehaviour
         }
         else
         {
-            rb.linearVelocity = transform.up * enemySpeed;
+            rb.linearVelocity = transform.up * activeSpeed;
         }
     }
 
