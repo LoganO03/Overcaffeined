@@ -17,8 +17,11 @@ Some of the difficulties we would encounter would primarily be in the enemy inte
       Sprites:<br/>
       Roguelike Modern City Tile Map, Kenney https://kenney.nl/assets/roguelike-modern-city <br/> 
       Rpg Urban Pack Tile Map, Kenney https://kenney.nl/assets/rpg-urban-pack <br/> 
-      Sounds:<br/>
-**Team member contributions:** <br/>
+**Sounds** <br/>
+      Metal Bin Opening.mp3 by sour_mc99 -- https://freesound.org/s/508414/ -- License: Creative Commons 0
+      dorm door opening.wav by pagancow -- https://freesound.org/s/15419/ -- License: Creative Commons 0
+      Vehicle_Car_Peugeot_308_Door_Open_Mono.wav by Nox_Sound -- https://freesound.org/s/522219/ -- License: Creative Commons 0
+      Rustling Leaves.wav by FunWithSound -- https://freesound.org/s/406099/ -- License: Creative Commons 0
 Logan O'Roark<br/>
 Logan Contributed mostly in the map design of the city and many of the aesthetic pieces of the game as he would create many of the sprites that where not found in the tile maps used for the game. He sourced the font and the tile maps. He contributed to the dialogue boxes and some of the dialogue, and some of the interactable found in the game. He also created the Start Menu. <br/>
 Niko Mannon<br/> 
